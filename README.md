@@ -3,4 +3,5 @@ docker-compose build
 docker-compose up
 
 To test:
-curl 127.0.0.1:80
+curl localhost:80/
+curl localhost:80/url/<url-to-test>/

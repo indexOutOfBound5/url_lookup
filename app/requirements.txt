@@ -1,2 +1,4 @@
 starlette
 uvicorn
+aioredis
+json
