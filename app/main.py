@@ -17,9 +17,10 @@ datastore = Datastore()
 @app.on_event("startup")
 async def start_datastore():
     await datastore.connect()
-    #TODO: Don't do this here, we'll overwrite stuff once we're sharded
+    #TODO: Don't do this here, we'll overwrite stuff other
+    # things write
     for url in bad_urls:
-        await datastore.setURL(url)
+        await datastore.set_bad_url(url)
 
 @app.on_event("shutdown")
 async def stop_datastore():
@@ -30,14 +31,14 @@ async def homepage(request):
         return JSONResponse({}, status_code=204)
 
 @app.route('/urlinfo/1/{hostname_port}/{path_query:path}')
-async def getIsURLBad(request):
+async def get_is_url_bad(request):
 
         hostname_port = request.path_params['hostname_port']
         path = request.path_params['path_query']
 
         url = hostname_port + "/" + path
 
-        response = await datastore.getURL(url)
+        response = await datastore.get_is_url_bad(url)
 
         if response:
             return JSONResponse({url:response}, status_code=200)

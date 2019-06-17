@@ -1,0 +1,7 @@
+starlette
+uvicorn
+aioredis
+json
+pytest
+pytest-asyncio
+asyncmock

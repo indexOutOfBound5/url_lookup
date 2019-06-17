@@ -19,12 +19,12 @@ class Datastore():
             await self._conn.wait_closed()
 
     #TODO setMany
-    async def setURL(self, url, malware_type=0):
+    async def set_bad_url(self, url, malware_type=0):
         ok = await self._conn.execute('set',
                 url, json.dumps({MALWARE_TYPE[malware_type]:True}))
         return ok == 'OK', ok
 
-    async def getURL(self, url, malware_type=0):
+    async def get_is_url_bad(self, url, malware_type=0):
         url_resp = await self._conn.execute('get', url)
         if url_resp:
             return json.loads(url_resp)[MALWARE_TYPE[malware_type]]
