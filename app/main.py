@@ -3,7 +3,8 @@ import uvicorn
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse
 
-from datastore import Datastore
+#TODO: Make it so we don't have to toggle this between relative and actual dependant on pytest vs. running the webserver
+from .datastore import Datastore
 
 bad_urls = set(["123.123.123.123:80/malware/234234/3",
                 "234.234.234.234:555/virus/there?",

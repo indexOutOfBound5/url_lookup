@@ -12,6 +12,7 @@
 
 ## To do:
         grep -irn TODO
+* Lint it
 * Add typing
 * Add more tests
 * Make Datastore a real ABC
